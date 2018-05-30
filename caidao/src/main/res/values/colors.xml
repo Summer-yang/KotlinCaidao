@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--主题颜色-->
+    <color name="caidaoColorPrimary">#3F51B5</color>
+    <color name="caidaoColorPrimaryDark">#303F9F</color>
+    <color name="caidaoColorAccent">#FF4081</color>
+
+    <!--AppBar颜色-->
+    <color name="caidaoColorAppbar">#3F51B5</color>
+    <color name="caidaoColorAppBarTitle">#ffffff</color>
+    <color name="caidaoColorAppBarSubtitle">#ffffff</color>
+
+    <!--Window背景色-->
+    <color name="caidaoWindowBackground">#f9f9f9</color>
+
+</resources>
