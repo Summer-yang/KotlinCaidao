@@ -1,13 +1,18 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+// upload to JCenter
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+// upload to JCenter
+
 android {
     compileSdkVersion 27
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName version
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -32,9 +37,90 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // android support 库
-    implementation 'com.android.support:design:27.1.1'
+    // android support
+    api 'com.android.support:design:27.1.1'
     // Kotlin库
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
+    api 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
 
 }
+
+// upload to JCenter
+group = "com.summer.caidao"
+version = "1.0.1"
+def siteUrl = 'https://github.com/Summer-yang/KotlinCaidao.git'
+def gitUrl = 'https://github.com/Summer-yang/KotlinCaidao.git'
+
+install{
+    repositories.mavenInstaller{
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'KotlinUtilLibrary'
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The KotlinUtilLibrary Software License, Version 1.0.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'summer'
+                        name 'Summer'
+                        email 'summer.work.001@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = "sources"
+}
+
+//task javadoc(type: Javadoc) {
+//    options {
+//        encoding "UTF-8"
+//        charSet "UTF-8"
+//        author true
+//        version true
+//        links "http://docs.oracle.com/javase/7/docs/api"
+//    }
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = "javadoc"
+//    from javadoc.destinationDir
+//}
+
+artifacts {
+//    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "caidao"
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
+// upload to JCenter
