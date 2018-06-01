@@ -8,7 +8,7 @@ package com.summer.caidao.check.click
  * Description: 防止疯狂连击工具类
  *
  */
-class CheckDoubleClick {
+class CaiDaoDoubleClick {
 
     private var lastClickTime: Long = 0
     private var clickSpacingInterval: Long = 1000
