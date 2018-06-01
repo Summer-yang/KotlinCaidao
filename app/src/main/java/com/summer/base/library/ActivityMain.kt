@@ -7,28 +7,35 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.summer.base.library.demo.caidao.FragmentDemoCaiDao
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_activity_main.*
+import kotlinx.android.synthetic.main.view_tool_bar.*
 
 class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private val fragmentNameDemoCaiDao = "FragmentDemoCaiDao"
+    private var lastShowFragmentName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(findViewById(R.id.caidao_toolbar))
+        setSupportActionBar(mToolbar)
 
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, findViewById(R.id.caidao_toolbar), R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+                this,
+                drawer_layout,
+                findViewById(R.id.mToolbar),
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
 
-
-        testButton.setOnClickListener {
-
-        }
+        // 初始化第一个Fragment
+        nav_view.setCheckedItem(R.id.nav_caidao)
+        setFragment(fragmentNameDemoCaiDao)
     }
 
     override fun onBackPressed() {
@@ -58,8 +65,8 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_caidao -> {
+                setFragment(FragmentDemoCaiDao::class.java.simpleName)
             }
             R.id.nav_gallery -> {
 
@@ -80,5 +87,33 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun setFragment(fragmentName: String?) {
+        if (fragmentName == lastShowFragmentName) return
+
+        val transaction = supportFragmentManager.beginTransaction()
+
+        // 如果有一个已经显示的Fragment则隐藏
+        if (null != lastShowFragmentName) {
+            transaction.hide(supportFragmentManager.findFragmentByTag(lastShowFragmentName))
+        }
+
+        // 先查看是不是已经有这个Fragment了
+        val fragment = supportFragmentManager.findFragmentByTag(fragmentName)
+        // 如果有了则显示
+        if (null == fragment) {
+            when (fragmentName) {
+                fragmentNameDemoCaiDao -> {
+                    transaction.add(R.id.mFrameLayout, FragmentDemoCaiDao(), fragmentNameDemoCaiDao)
+                }
+            }
+        } else {
+            // 显示当前这个Fragment
+            transaction.show(fragment)
+        }
+        transaction.commit()
+
+        lastShowFragmentName = fragmentName
     }
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".ActivityMain">
 
-    <include layout="@layout/caidao_toolbar" />
+    <include layout="@layout/view_tool_bar" />
 
     <include layout="@layout/content_activity_main" />
 

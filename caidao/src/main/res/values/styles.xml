@@ -1,14 +1,3 @@
 <resources>
 
-    <style name="CaiDaoAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/caidaoColorPrimary</item>
-        <item name="colorPrimaryDark">@color/caidaoColorPrimaryDark</item>
-        <item name="colorAccent">@color/caidaoColorAccent</item>
-        <item name="android:windowBackground">@color/caidaoWindowBackground</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

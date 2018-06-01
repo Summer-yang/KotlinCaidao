@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/caidao_app_bar_layout"
+    android:id="@+id/mAppBarLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="?android:attr/actionBarSize"
     android:theme="@style/AppTheme.AppBarOverlay">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/caidao_toolbar"
+        android:id="@+id/mToolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/caidaoColorAppbar"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppbar"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:subtitleTextColor="@color/caidaoColorAppBarSubtitle"
-        app:titleTextColor="@color/caidaoColorAppBarTitle" />
+        app:subtitleTextColor="@color/colorAppBarSubtitle"
+        app:titleTextColor="@color/colorAppBarTitle" />
 </android.support.design.widget.AppBarLayout>
