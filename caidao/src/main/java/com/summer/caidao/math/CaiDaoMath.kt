@@ -1,5 +1,8 @@
 package com.summer.caidao.math
 
+import java.math.BigDecimal
+
+
 /**
  * Created by
  * User -> Summer
@@ -45,13 +48,29 @@ class CaiDaoMath {
     }
 
     /**
-     * 除法
+     * 提供（相对）精确的除法运算，当发生除不尽的情况时，精确到 小数点以后 DEF_DIV_SCALE 位，以后的数字四舍五入
      * @param double1 被除数
      * @param double2 除数
-     * @return 商
+     * @return 两个参数的商
      */
     fun div(double1: Double, double2: Double): Double {
-        return double1.div(double2)
+        return div(double1, double2, DEF_DIV_SCALE)
+    }
+
+    /**
+     * 提供（相对）精确的除法运算。当发生除不尽的情况时，由scale参数指 定精度，以后的数字四舍五入。
+     * @param double1 被除数
+     * @param double2 除数
+     * @param scale 保留小数的位数
+     * @return 商
+     */
+    fun div(double1: Double, double2: Double, scale: Int): Double {
+        if (0 < scale) {
+            throw Exception("The scale must be a positive integer or zero")
+        }
+        val bigDecimal1 = BigDecimal(double1)
+        val bigDecimal2 = BigDecimal(double2)
+        return bigDecimal1.divide(bigDecimal2, scale, BigDecimal.ROUND_HALF_UP).toDouble()
     }
 
 
