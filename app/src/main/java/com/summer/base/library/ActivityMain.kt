@@ -11,7 +11,7 @@ import com.summer.base.library.demo.caidao.FragmentDemoCaiDao
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_tool_bar.*
 
-class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class ActivityMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val fragmentNameDemoCaiDao = "FragmentDemoCaiDao"
     private var lastShowFragmentName: String? = null
