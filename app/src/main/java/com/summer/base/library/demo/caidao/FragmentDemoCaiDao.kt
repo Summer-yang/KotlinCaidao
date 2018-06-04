@@ -9,11 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.summer.base.library.R
+import com.summer.base.library.login.google.ActivityLoginGoogle
 import com.summer.caidao.check.click.CaiDaoDoubleClick
 import com.summer.caidao.keyboard.dismiss.CaiDaoKeyboardDismiss
 import com.summer.caidao.permission.CaiDaoPermission
 import com.summer.caidao.toast.CaidaoToast
 import kotlinx.android.synthetic.main.fragment_fragment_demo_cai_dao.*
+import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -47,6 +49,10 @@ class FragmentDemoCaiDao : Fragment() {
             if (CaiDaoPermission().checkPermissionInFragment(this, 999, Manifest.permission.CAMERA)) {
                 CaidaoToast.Builder(context!!).build().showShortSafe("已经有权限了")
             }
+        }
+
+        googleLogin.setOnClickListener {
+            startActivity<ActivityLoginGoogle>()
         }
     }
 
