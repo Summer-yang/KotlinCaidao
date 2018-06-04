@@ -11,5 +11,7 @@ class ActivityLauncher : AppCompatActivity() {
         setContentView(R.layout.activity_launcher)
 
         startActivity(Intent(this, ActivityMain::class.java))
+
+        finish()
     }
 }

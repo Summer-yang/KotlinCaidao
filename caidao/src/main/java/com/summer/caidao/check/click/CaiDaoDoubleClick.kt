@@ -7,6 +7,12 @@ package com.summer.caidao.check.click
  *
  * Description: 防止疯狂连击工具类
  *
+ * 使用方法:
+ * 创建全局变量 val caiDaoDoubleClick = CaiDaoDoubleClick()
+ * caiDaoDoubleClick.isFastDoubleClick()
+ * or
+ * isFastDoubleClick.isFastDoubleClick(view id)
+ *
  */
 class CaiDaoDoubleClick {
 

@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".demo.caidao.FragmentDemoCaiDao">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <EditText
+        android:id="@+id/etDismissKeyboard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="测试点击空白位置收键盘的工具类"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/doubleClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="疯狂连击检测"
+        app:layout_constraintTop_toBottomOf="@id/etDismissKeyboard" />
+
+    <Button
+        android:id="@+id/checkPermission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="运行时权限请求"
+        app:layout_constraintTop_toBottomOf="@id/doubleClick" />
+
+</android.support.constraint.ConstraintLayout>

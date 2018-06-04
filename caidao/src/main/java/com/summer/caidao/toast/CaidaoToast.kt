@@ -113,7 +113,7 @@ class CaidaoToast private constructor(context: Context) {
      *
      * @param text 文本
      */
-    fun showShortSafe(text: CharSequence) {
+    fun showShortSafe(text: String) {
         sHandler.post { show(text, Toast.LENGTH_SHORT) }
     }
 
@@ -151,7 +151,7 @@ class CaidaoToast private constructor(context: Context) {
      *
      * @param text 文本
      */
-    fun showLongSafe(text: CharSequence) {
+    fun showLongSafe(text: String) {
         sHandler.post { show(text, Toast.LENGTH_LONG) }
     }
 
@@ -189,7 +189,7 @@ class CaidaoToast private constructor(context: Context) {
      *
      * @param text 文本
      */
-    fun showShort(text: CharSequence) {
+    fun showShort(text: String) {
         show(text, Toast.LENGTH_SHORT)
     }
 
@@ -227,7 +227,7 @@ class CaidaoToast private constructor(context: Context) {
      *
      * @param text 文本
      */
-    fun showLong(text: CharSequence) {
+    fun showLong(text: String) {
         show(text, Toast.LENGTH_LONG)
     }
 
@@ -299,7 +299,7 @@ class CaidaoToast private constructor(context: Context) {
      * @param duration 显示时长
      */
     @SuppressLint("ShowToast")
-    private fun show(text: CharSequence, duration: Int) {
+    private fun show(text: String, duration: Int) {
         cancel()
         if (text.isBlank()) return
 
