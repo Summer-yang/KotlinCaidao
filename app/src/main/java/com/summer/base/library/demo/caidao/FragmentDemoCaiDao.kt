@@ -2,6 +2,7 @@ package com.summer.base.library.demo.caidao
 
 
 import android.Manifest
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -57,7 +58,10 @@ class FragmentDemoCaiDao : Fragment() {
             }
 
             override fun onShouldShow(shouldShowPermission: List<String>) {
-                CaidaoToast.Builder(context!!).build().showShortSafe("应该给用户提示")
+                CaidaoToast.Builder(context!!)
+                        .setBackgroundColor(Color.BLACK)
+                        .setMessageColor(Color.WHITE)
+                        .build().showShortSafe("应该给用户提示")
             }
 
             override fun onFailed() {
