@@ -25,7 +25,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".login.google.ActivityLoginGoogle" />
         <activity android:name=".login.sina.ActivityLoginSian" />
-        <activity android:name=".login.wechat.ActivityLoginWeChat"></activity>
+        <activity android:name=".login.wechat.ActivityLoginWeChat" />
     </application>
 
 </manifest>
