@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.summer.base.library.R
+import com.summer.base.library.login.facebook.ActivityLoginFacebook
 import com.summer.base.library.login.google.ActivityLoginGoogle
 import com.summer.base.library.login.sina.ActivityLoginSian
 import com.summer.base.library.login.wechat.ActivityLoginWeChat
@@ -62,6 +63,9 @@ class FragmentDemoCaiDao : Fragment() {
         }
         weChatLogin.setOnClickListener {
             startActivity<ActivityLoginWeChat>()
+        }
+        facebookLogin.setOnClickListener {
+            startActivity<ActivityLoginFacebook>()
         }
     }
 
