@@ -8,7 +8,7 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.summer.base.library.BaseActivity
+import com.summer.base.library.base.BaseActivity
 import com.summer.base.library.R
 import com.summer.caidao.toast.CaidaoToast
 import kotlinx.android.synthetic.main.activity_login_facebook.*
