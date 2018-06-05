@@ -11,6 +11,18 @@ import com.summer.base.library.Constants
 import com.summer.base.library.R
 import kotlinx.android.synthetic.main.activity_login_google.*
 
+/**
+ * Google+登录
+ * 配置步骤
+ * 1.在Firebase上注册App
+ * 2.在工程根目录build.gradle中添加
+ *   classpath 'com.google.gms:google-services:4.0.0'
+ * 3.在app module下添加
+ *   implementation 'com.google.firebase:firebase-core:16.0.0'
+ *   implementation 'com.google.android.gms:play-services-auth:15.0.1'
+ * 4.在strings文件或常量文件中定义GOOGLE_KEY
+ * 5.使用以下代码登录
+ */
 class ActivityLoginGoogle : BaseActivity() {
 
     private val requestCodeGoogleSignIn = 999

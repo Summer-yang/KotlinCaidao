@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.summer.base.library.R
 import com.summer.base.library.login.google.ActivityLoginGoogle
+import com.summer.base.library.login.sina.ActivityLoginSian
 import com.summer.caidao.check.click.CaiDaoDoubleClick
 import com.summer.caidao.keyboard.dismiss.CaiDaoKeyboardDismiss
 import com.summer.caidao.permission.CaiDaoPermission
@@ -53,6 +54,10 @@ class FragmentDemoCaiDao : Fragment() {
 
         googleLogin.setOnClickListener {
             startActivity<ActivityLoginGoogle>()
+        }
+
+        sinaLogin.setOnClickListener {
+            startActivity<ActivityLoginSian>()
         }
     }
 
