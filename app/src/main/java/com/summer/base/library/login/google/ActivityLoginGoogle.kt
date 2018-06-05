@@ -35,6 +35,10 @@ class ActivityLoginGoogle : BaseActivity() {
         btnGoogleLogin.setOnClickListener {
             googleLogin()
         }
+
+        btnGoogleLogout.setOnClickListener {
+            googleLogout()
+        }
     }
 
     fun googleLogin() {
@@ -80,5 +84,9 @@ class ActivityLoginGoogle : BaseActivity() {
         } else {
             token.text = idToken
         }
+    }
+
+    private fun googleLogout() {
+
     }
 }

@@ -7,30 +7,30 @@
     tools:context=".login.google.ActivityLoginGoogle">
 
     <Button
-        android:id="@+id/btnGoogleLogin"
+        android:id="@+id/btnFacebookLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google+登录"
+        android:text="Facebook登录"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnGoogleLogout"
+        android:id="@+id/btnFacebookLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google+登出"
+        android:text="Facebook登出"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnGoogleLogin" />
+        app:layout_constraintTop_toBottomOf="@id/btnFacebookLogin" />
 
     <TextView
         android:id="@+id/token"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="这里显示Google登录返回的token"
+        android:text="这里显示Facebook登录返回的token"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGoogleLogout" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFacebookLogout" />
 </android.support.constraint.ConstraintLayout>

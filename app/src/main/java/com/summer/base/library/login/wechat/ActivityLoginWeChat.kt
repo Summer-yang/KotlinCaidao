@@ -5,6 +5,11 @@ import com.summer.base.library.BaseActivity
 import com.summer.base.library.R
 import kotlinx.android.synthetic.main.activity_login_we_chat.*
 
+/**
+ * 微信登录
+ * 配置步骤:
+ *
+ */
 class ActivityLoginWeChat : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -27,6 +27,7 @@
         <activity android:name=".login.google.ActivityLoginGoogle" />
         <activity android:name=".login.sina.ActivityLoginSian" />
         <activity android:name=".login.wechat.ActivityLoginWeChat" />
+        <activity android:name=".login.facebook.ActivityLoginFacebook"></activity>
     </application>
 
 </manifest>
