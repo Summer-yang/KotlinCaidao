@@ -3,10 +3,7 @@ package com.summer.base.library.login.sina
 import android.content.Intent
 import android.os.Bundle
 import com.sina.weibo.sdk.WbSdk
-import com.sina.weibo.sdk.auth.AuthInfo
-import com.sina.weibo.sdk.auth.Oauth2AccessToken
-import com.sina.weibo.sdk.auth.WbAuthListener
-import com.sina.weibo.sdk.auth.WbConnectErrorMessage
+import com.sina.weibo.sdk.auth.*
 import com.sina.weibo.sdk.auth.sso.SsoHandler
 import com.summer.base.library.BaseActivity
 import com.summer.base.library.Constants
@@ -16,14 +13,37 @@ import kotlinx.android.synthetic.main.activity_login_sian.*
 
 class ActivityLoginSian : BaseActivity(), WbAuthListener {
 
+    private var mIsSessionValid = false
+    private var mAccessToken: Oauth2AccessToken? = null
     private var mSsoHandler: SsoHandler? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_sian)
 
+        // 判定是否登陆过
+        mAccessToken = AccessTokenKeeper.readAccessToken(this)
+        mIsSessionValid = if (null != mAccessToken) {
+            mAccessToken!!.isSessionValid
+        } else {
+            false
+        }
+
+        if (mIsSessionValid) {
+            btnSian.text = "登出"
+            accessToken.text = if (null != mAccessToken) {
+                mAccessToken!!.token
+            } else {
+                "mAccessToken null"
+            }
+        }
+
         btnSian.setOnClickListener {
-            sinaLogin()
+            if (mIsSessionValid) {
+                signOut()
+            } else {
+                sinaLogin()
+            }
         }
     }
 
@@ -67,7 +87,18 @@ class ActivityLoginSian : BaseActivity(), WbAuthListener {
     }
 
     private fun updateUI(mAccessToken: String) {
+        mIsSessionValid = true
+
+        btnSian.text = "登出"
         accessToken.text = mAccessToken
     }
 
+
+    private fun signOut() {
+        AccessTokenKeeper.clear(applicationContext)
+        mAccessToken = Oauth2AccessToken()
+
+        btnSian.text = "新浪微博登录"
+        accessToken.text = "这里显示新浪微博返回的AccessToken"
+    }
 }
