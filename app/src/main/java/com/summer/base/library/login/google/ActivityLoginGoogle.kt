@@ -9,6 +9,7 @@ import com.google.android.gms.common.api.ApiException
 import com.summer.base.library.BaseActivity
 import com.summer.base.library.Constants
 import com.summer.base.library.R
+import com.summer.caidao.toast.CaidaoToast
 import kotlinx.android.synthetic.main.activity_login_google.*
 
 /**
@@ -38,38 +39,45 @@ import kotlinx.android.synthetic.main.activity_login_google.*
 class ActivityLoginGoogle : BaseActivity() {
 
     private val requestCodeGoogleSignIn = 999
+    private var isLoggedIn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_google)
 
+        // 判定是不是登陆过
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        if (null != account && !account.isExpired) {
+            updateUI(account.idToken)
+        }
 
         btnGoogleLogin.setOnClickListener {
-            googleLogin()
+            if (isLoggedIn) {
+                CaidaoToast.Builder(this).build().showShortSafe("已经登陆过了")
+            } else {
+                googleLogin()
+            }
         }
 
         btnGoogleLogout.setOnClickListener {
-            googleLogout()
+            if (isLoggedIn) {
+                googleLogout()
+            } else {
+                CaidaoToast.Builder(this).build().showShortSafe("请先登录")
+            }
         }
     }
 
     fun googleLogin() {
+        // Configure sign-in to request the user's ID, email address, and basic profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(Constants.GOOGLE_KEY)
+                .requestEmail()
+                .build()
 
-        // 之前登陆过
-        val account = GoogleSignIn.getLastSignedInAccount(this)
-        if (null != account) {
-            updateUI(account.idToken)
-        } else {
-            // Configure sign-in to request the user's ID, email address, and basic profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(Constants.GOOGLE_KEY)
-                    .requestEmail()
-                    .build()
+        val googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-            val googleSignInClient = GoogleSignIn.getClient(this, gso)
-            startActivityForResult(googleSignInClient.signInIntent, requestCodeGoogleSignIn)
-
-        }
+        startActivityForResult(googleSignInClient.signInIntent, requestCodeGoogleSignIn)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -81,10 +89,10 @@ class ActivityLoginGoogle : BaseActivity() {
                     val account = task.getResult(ApiException::class.java)
                     updateUI(account.idToken)
                 } catch (e: ApiException) {
-                    updateUI(null)
+                    token.text = String.format("%s:%s", "登录失败task.getResult异常", e.message)
                 }
             } else {
-                token.text = "登录异常"
+                token.text = "登录失败 resultCode != Activity.RESULT_OK"
             }
         }
     }
@@ -92,13 +100,24 @@ class ActivityLoginGoogle : BaseActivity() {
 
     private fun updateUI(idToken: String?) {
         if (idToken.isNullOrBlank()) {
-            token.text = "登录异常"
+            isLoggedIn = false
+            token.text = "token null"
         } else {
+            isLoggedIn = true
             token.text = idToken
         }
     }
 
     private fun googleLogout() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(Constants.GOOGLE_KEY)
+                .requestEmail()
+                .build()
 
+        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+        googleSignInClient.signOut()
+
+        isLoggedIn = false
+        token.text = "这里显示Google登录返回的token"
     }
 }
