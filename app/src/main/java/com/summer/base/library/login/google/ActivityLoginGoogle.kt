@@ -15,13 +15,25 @@ import kotlinx.android.synthetic.main.activity_login_google.*
  * Google+登录
  * 配置步骤
  * 1.在Firebase上注册App
- * 2.在工程根目录build.gradle中添加
+ *
+ * 2.获取debug SHA 证书指纹
+ * keytool -exportcert -list -v \-alias androiddebugkey -keystore ~/.android/debug.keystore
+ *
+ * 3.获取release SHA 证书指纹
+ * keytool -exportcert -list -v \-alias <your-key-name> -keystore <path-to-production-keystore>
+ *
+ * 证书指纹添加在Firebase后台项目设置中
+ *
+ * 4.在工程根目录build.gradle中添加
  *   classpath 'com.google.gms:google-services:4.0.0'
- * 3.在app module下添加
+ *
+ * 5.在app module下添加
  *   implementation 'com.google.firebase:firebase-core:16.0.0'
  *   implementation 'com.google.android.gms:play-services-auth:15.0.1'
- * 4.在strings文件或常量文件中定义GOOGLE_KEY
- * 5.使用以下代码登录
+ *
+ * 6.在strings文件或常量文件中定义GOOGLE_KEY
+ *
+ * 7.使用以下代码登录
  */
 class ActivityLoginGoogle : BaseActivity() {
 

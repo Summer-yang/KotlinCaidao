@@ -122,6 +122,7 @@ class ActivityLoginSian : BaseActivity(), WbAuthListener {
         AccessTokenKeeper.clear(applicationContext)
         mAccessToken = Oauth2AccessToken()
 
+        mIsSessionValid = false
         btnSianLogin.text = "新浪微博登录"
         accessToken.text = "这里显示新浪微博返回的AccessToken"
     }

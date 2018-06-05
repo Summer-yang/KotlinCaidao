@@ -1,5 +1,6 @@
 package com.summer.base.library.login.facebook
 
+import android.content.Intent
 import android.os.Bundle
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -35,6 +36,7 @@ import kotlinx.android.synthetic.main.activity_login_facebook.*
 class ActivityLoginFacebook : BaseActivity() {
 
     private var isLoggedIn = false
+    private lateinit var callbackManager: CallbackManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +67,7 @@ class ActivityLoginFacebook : BaseActivity() {
     }
 
     private fun login() {
-        val callbackManager = CallbackManager.Factory.create()
+        callbackManager = CallbackManager.Factory.create()
         val loginManager = LoginManager.getInstance()
         loginManager.logInWithReadPermissions(this, listOf("public_profile"))
         loginManager.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
@@ -88,10 +90,18 @@ class ActivityLoginFacebook : BaseActivity() {
     private fun logout() {
         val loginManager = LoginManager.getInstance()
         loginManager.logOut()
+        isLoggedIn = false
+        token.text = "这里显示Facebook登录返回的token"
     }
 
     private fun loginSuccess(result: LoginResult) {
         CaidaoToast.Builder(this).build().showShortSafe("登录成功")
+        isLoggedIn = true
         token.text = result.accessToken.token
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

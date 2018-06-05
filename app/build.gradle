@@ -31,7 +31,7 @@ android {
     // 新浪微博
     splits {
         abi {
-            enable true
+            enable false
             reset()
             include 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'mips', 'mips64', 'x86', 'x86_64'
             universalApk true
@@ -56,7 +56,7 @@ dependencies {
     // 新浪微博登录
     implementation 'com.sina.weibo.sdk:core:4.2.7:openDefaultRelease@aar'
     // Facebook登录
-    implementation ('com.facebook.android:facebook-android-sdk:4.31.0'){
+    implementation('com.facebook.android:facebook-android-sdk:4.31.0') {
         exclude group: "com.android.support"
     }
 }
