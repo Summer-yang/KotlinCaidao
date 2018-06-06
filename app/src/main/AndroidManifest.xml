@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--Facebook login-->
+        <!-- Facebook login -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <!--禁用自动事件记录-->
+        <!-- 禁用自动事件记录 -->
         <meta-data
             android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
             android:value="false" />
@@ -39,8 +39,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <!--Facebook login-->
-
+        <!-- Facebook login -->
 
         <activity android:name=".ActivityLauncher">
             <intent-filter>
@@ -57,6 +56,7 @@
         <activity android:name=".login.sina.ActivityLoginSian" />
         <activity android:name=".login.wechat.ActivityLoginWeChat" />
         <activity android:name=".login.facebook.ActivityLoginFacebook" />
+        <activity android:name=".share.sina.ActivityShareSina" />
     </application>
 
 </manifest>
