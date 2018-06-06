@@ -42,15 +42,22 @@ class ActivityShareSina : BaseActivity(), WbShareCallback, WbAuthListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share_sina)
 
+        val mAuthInfo = AuthInfo(this,
+                Constants.SINA_WEIBO_APP_KEY,
+                Constants.SINA_WEIBO_REDIRECT_URL,
+                Constants.SINA_WEIBO_SCOPE)
+        // 必须先执行此方法
+        WbSdk.install(this, mAuthInfo)
+
         // 获取要分享的内容
         entityShareWeibo = getShareData()
+
+        shareHandler = WbShareHandler(this)
+        shareHandler.registerApp()
 
         // 初始化
         mAccessToken = AccessTokenKeeper.readAccessToken(this)
         mIsSessionValid = mAccessToken.isSessionValid
-
-        shareHandler = WbShareHandler(this)
-        shareHandler.registerApp()
 
         initShare()
     }
@@ -194,13 +201,6 @@ class ActivityShareSina : BaseActivity(), WbShareCallback, WbAuthListener {
     /**--------- 授权  ----*/
 
     private fun sinaLogin() {
-        val mAuthInfo = AuthInfo(this,
-                Constants.SINA_WEIBO_APP_KEY,
-                Constants.SINA_WEIBO_REDIRECT_URL,
-                Constants.SINA_WEIBO_SCOPE)
-
-        WbSdk.install(this, mAuthInfo)
-
         mSsoHandler = SsoHandler(this)
         mSsoHandler.authorize(this)
     }

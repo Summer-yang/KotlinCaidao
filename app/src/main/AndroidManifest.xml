@@ -51,7 +51,8 @@
         <activity
             android:name=".ActivityMain"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".login.google.ActivityLoginGoogle" />
         <activity android:name=".login.sina.ActivityLoginSian" />
         <activity android:name=".login.wechat.ActivityLoginWeChat" />
