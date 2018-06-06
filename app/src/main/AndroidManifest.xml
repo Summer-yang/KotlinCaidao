@@ -58,6 +58,7 @@
         <activity android:name=".login.wechat.ActivityLoginWeChat" />
         <activity android:name=".login.facebook.ActivityLoginFacebook" />
         <activity android:name=".share.sina.ActivityShareSina" />
+        <activity android:name=".share.google.ActivityShareGoogle"/>
     </application>
 
 </manifest>

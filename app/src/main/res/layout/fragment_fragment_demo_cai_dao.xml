@@ -64,6 +64,12 @@
                 android:text="Facebook登录" />
 
             <Button
+                android:id="@+id/googleShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Google+分享" />
+
+            <Button
                 android:id="@+id/sinaShare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

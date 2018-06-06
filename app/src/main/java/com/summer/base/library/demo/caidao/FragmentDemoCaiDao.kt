@@ -13,6 +13,7 @@ import com.summer.base.library.login.facebook.ActivityLoginFacebook
 import com.summer.base.library.login.google.ActivityLoginGoogle
 import com.summer.base.library.login.sina.ActivityLoginSian
 import com.summer.base.library.login.wechat.ActivityLoginWeChat
+import com.summer.base.library.share.google.ActivityShareGoogle
 import com.summer.base.library.share.sina.ActivityShareSina
 import com.summer.caidao.check.click.CaiDaoDoubleClick
 import com.summer.caidao.keyboard.dismiss.CaiDaoKeyboardDismiss
@@ -67,6 +68,9 @@ class FragmentDemoCaiDao : Fragment() {
         }
         facebookLogin.setOnClickListener {
             startActivity<ActivityLoginFacebook>()
+        }
+        googleShare.setOnClickListener {
+            startActivity<ActivityShareGoogle>()
         }
         sinaShare.setOnClickListener {
             startActivity<ActivityShareSina>()
