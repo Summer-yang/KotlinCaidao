@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".base.BaseApplication"
@@ -58,7 +62,7 @@
         <activity android:name=".login.wechat.ActivityLoginWeChat" />
         <activity android:name=".login.facebook.ActivityLoginFacebook" />
         <activity android:name=".share.sina.ActivityShareSina" />
-        <activity android:name=".share.google.ActivityShareGoogle"/>
+        <activity android:name=".share.google.ActivityShareGoogle" />
     </application>
 
 </manifest>
