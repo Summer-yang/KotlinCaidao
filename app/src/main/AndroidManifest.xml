@@ -57,12 +57,15 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".login.google.ActivityLoginGoogle" />
-        <activity android:name=".login.sina.ActivityLoginSian" />
-        <activity android:name=".login.wechat.ActivityLoginWeChat" />
-        <activity android:name=".login.facebook.ActivityLoginFacebook" />
-        <activity android:name=".share.sina.ActivityShareSina" />
-        <activity android:name=".share.google.ActivityShareGoogle" />
+        <activity
+            android:name=".demo.caidao.dismiss.keyboard.ActivityDismissKeyboard"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".demo.caidao.login.google.ActivityLoginGoogle" />
+        <activity android:name=".demo.caidao.login.sina.ActivityLoginSian" />
+        <activity android:name=".demo.caidao.login.wechat.ActivityLoginWeChat" />
+        <activity android:name=".demo.caidao.login.facebook.ActivityLoginFacebook" />
+        <activity android:name=".demo.caidao.share.sina.ActivityShareSina" />
+        <activity android:name=".demo.caidao.share.google.ActivityShareGoogle" />
     </application>
 
 </manifest>

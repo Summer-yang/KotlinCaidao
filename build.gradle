@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha16'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // Firebase
         classpath 'com.google.gms:google-services:4.0.0'
@@ -23,6 +23,10 @@ allprojects {
         jcenter()
         // 新浪微博
         maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+        // com.google.android.material
+        maven {
+            url "https://maven.google.com"
+        }
     }
 }
 

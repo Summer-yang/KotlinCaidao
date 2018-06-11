@@ -1,9 +1,9 @@
 package com.summer.base.library
 
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
+import com.google.android.material.navigation.NavigationView
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
 import com.summer.base.library.base.BaseActivity
@@ -96,7 +96,7 @@ class ActivityMain : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         // 如果有一个已经显示的Fragment则隐藏
         if (null != lastShowFragmentName) {
-            transaction.hide(supportFragmentManager.findFragmentByTag(lastShowFragmentName))
+            transaction.hide(supportFragmentManager.findFragmentByTag(lastShowFragmentName)!!)
         }
 
         // 先查看是不是已经有这个Fragment了

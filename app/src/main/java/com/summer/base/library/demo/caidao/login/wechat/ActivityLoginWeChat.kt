@@ -1,4 +1,4 @@
-package com.summer.base.library.login.wechat
+package com.summer.base.library.demo.caidao.login.wechat
 
 import android.os.Bundle
 import com.summer.base.library.R

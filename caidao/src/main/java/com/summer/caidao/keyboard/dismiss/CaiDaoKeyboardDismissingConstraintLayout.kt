@@ -2,9 +2,9 @@ package com.summer.caidao.keyboard.dismiss
 
 import android.app.Activity
 import android.content.Context
-import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.MotionEvent
+import androidx.constraintlayout.ConstraintLayout
 
 
 /**

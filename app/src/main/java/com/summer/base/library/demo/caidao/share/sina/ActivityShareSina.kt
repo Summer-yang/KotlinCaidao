@@ -1,4 +1,4 @@
-package com.summer.base.library.share.sina
+package com.summer.base.library.demo.caidao.share.sina
 
 import android.content.Intent
 import android.net.Uri

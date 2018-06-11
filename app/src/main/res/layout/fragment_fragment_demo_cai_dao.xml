@@ -1,79 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rvMenuList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".demo.caidao.FragmentDemoCaiDao">
-
-    <EditText
-        android:id="@+id/etDismissKeyboard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="测试点击空白位置收键盘的工具类"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDismissKeyboard">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/doubleClick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="疯狂连击检测" />
-
-            <Button
-                android:id="@+id/checkPermission"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="运行时权限请求" />
-
-            <Button
-                android:id="@+id/googleLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Google+登录" />
-
-            <Button
-                android:id="@+id/sinaLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="新浪微博登录" />
-
-            <Button
-                android:id="@+id/weChatLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="微信登录" />
-
-            <Button
-                android:id="@+id/facebookLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Facebook登录" />
-
-            <Button
-                android:id="@+id/googleShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Google+分享" />
-
-            <Button
-                android:id="@+id/sinaShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="新浪微博分享" />
-        </LinearLayout>
-    </ScrollView>
-</android.support.constraint.ConstraintLayout>
+    android:orientation="vertical"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:context=".demo.caidao.FragmentDemoCaiDao" />

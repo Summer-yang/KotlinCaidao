@@ -3,9 +3,9 @@ package com.summer.caidao.permission
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.Fragment
-import android.support.v4.content.PermissionChecker
+import androidx.core.app.ActivityCompat
+import androidx.core.content.PermissionChecker
+import androidx.fragment.app.Fragment
 
 /**
  * Created by

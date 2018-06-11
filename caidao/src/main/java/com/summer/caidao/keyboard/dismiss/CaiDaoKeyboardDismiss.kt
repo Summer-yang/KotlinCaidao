@@ -1,10 +1,10 @@
 package com.summer.caidao.keyboard.dismiss
 
 import android.app.Activity
-import android.support.constraint.ConstraintLayout
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.constraintlayout.ConstraintLayout
 
 
 /**

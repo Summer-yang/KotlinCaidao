@@ -1,6 +1,6 @@
 package com.summer.base.library.base
 
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 
 /**
  * Created by

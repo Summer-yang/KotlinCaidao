@@ -1,7 +1,7 @@
-package com.summer.base.library.share.google
+package com.summer.base.library.demo.caidao.share.google
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.summer.base.library.R
 
 class ActivityShareGoogle : AppCompatActivity() {
