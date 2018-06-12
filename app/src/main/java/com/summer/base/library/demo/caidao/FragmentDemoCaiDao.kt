@@ -15,6 +15,7 @@ import com.summer.base.library.demo.caidao.login.facebook.ActivityLoginFacebook
 import com.summer.base.library.demo.caidao.login.google.ActivityLoginGoogle
 import com.summer.base.library.demo.caidao.login.sina.ActivityLoginSian
 import com.summer.base.library.demo.caidao.login.wechat.ActivityLoginWeChat
+import com.summer.base.library.demo.caidao.share.facebook.ActivityShareFacebook
 import com.summer.base.library.demo.caidao.share.google.ActivityShareGoogle
 import com.summer.base.library.demo.caidao.share.sina.ActivityShareSina
 import com.summer.caidao.check.click.CaiDaoDoubleClick
@@ -117,6 +118,12 @@ class FragmentDemoCaiDao : androidx.fragment.app.Fragment(), AdapterMenuList.OnI
             }
             9 -> {
                 startActivity(Intent(context, ActivityShareSina::class.java))
+            }
+            10 -> {
+
+            }
+            11 -> {
+                startActivity(Intent(context, ActivityShareFacebook::class.java))
             }
         }
     }

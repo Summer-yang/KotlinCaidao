@@ -26,7 +26,6 @@
         <meta-data
             android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
             android:value="false" />
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -44,6 +43,11 @@
             </intent-filter>
         </activity>
         <!-- Facebook login -->
+        <!-- Facebook Share -->
+        <provider android:authorities="com.facebook.app.FacebookContentProvider206391860152378"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+        <!-- Facebook Share -->
 
         <activity android:name=".ActivityLauncher">
             <intent-filter>
@@ -66,6 +70,7 @@
         <activity android:name=".demo.caidao.login.facebook.ActivityLoginFacebook" />
         <activity android:name=".demo.caidao.share.sina.ActivityShareSina" />
         <activity android:name=".demo.caidao.share.google.ActivityShareGoogle" />
+        <activity android:name=".demo.caidao.share.facebook.ActivityShareFacebook" />
     </application>
 
 </manifest>

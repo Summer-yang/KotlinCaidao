@@ -32,7 +32,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    // android support
+    // android support 被Material Components取代
 //    api 'com.android.support:appcompat-v7:27.1.1'
 //    api 'com.android.support:design:27.1.1'
 //    api 'com.android.support:recyclerview-v7:27.1.1'

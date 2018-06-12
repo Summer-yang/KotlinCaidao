@@ -42,6 +42,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
@@ -60,6 +62,10 @@ dependencies {
     }
     // 微信开放平台
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    // Google分享
+    implementation 'com.google.android.gms:play-services-plus:15.0.1'
+    // Facebook分享
+    implementation 'com.facebook.android:facebook-share:4.31.0'
 }
 
 // Firebase
