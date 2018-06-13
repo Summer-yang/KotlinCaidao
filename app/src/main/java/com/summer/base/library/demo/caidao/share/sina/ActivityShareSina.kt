@@ -38,10 +38,15 @@ class ActivityShareSina : BaseActivity(), WbShareCallback, WbAuthListener {
     // 普通分享 or 分享到story
     private var isNormalShare = true
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_share_sina)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_share_sina
+    }
+
+    override fun initView() {
         val mAuthInfo = AuthInfo(this,
                 Constants.SINA_WEIBO_APP_KEY,
                 Constants.SINA_WEIBO_REDIRECT_URL,

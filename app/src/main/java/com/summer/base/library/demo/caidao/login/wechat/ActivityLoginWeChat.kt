@@ -32,10 +32,15 @@ class ActivityLoginWeChat : BaseActivity() {
 
     private lateinit var api: IWXAPI
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_we_chat)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_login_we_chat
+    }
+
+    override fun initView() {
         btnWeChatLogin.setOnClickListener {
             weChatLogin()
         }

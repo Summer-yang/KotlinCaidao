@@ -7,10 +7,15 @@ import com.summer.caidao.keyboard.dismiss.CaiDaoKeyboardDismiss
 
 class ActivityDismissKeyboard : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dismiss_keyboard)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_dismiss_keyboard
+    }
+
+    override fun initView() {
         CaiDaoKeyboardDismiss().useWith(this)
     }
 }

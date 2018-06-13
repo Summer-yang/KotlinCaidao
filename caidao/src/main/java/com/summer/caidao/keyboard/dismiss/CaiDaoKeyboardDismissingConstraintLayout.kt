@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
-import androidx.constraintlayout.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 
 
 /**

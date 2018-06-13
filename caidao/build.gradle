@@ -1,11 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
 // upload to JCenter
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 // upload to JCenter
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -28,52 +26,55 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
+    dependencies {
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        // android support 被Material Components取代
+        api 'com.android.support:appcompat-v7:28.0.0-alpha3'
+        api 'com.android.support:design:28.0.0-alpha3'
+        api 'com.android.support:recyclerview-v7:28.0.0-alpha3'
+        api 'com.android.support.constraint:constraint-layout:1.1.2'
+        api 'com.android.support:cardview-v7:28.0.0-alpha3'
+        // Material Components for Android
+//        api 'androidx.constraintlayout:constraintlayout:1.1.2'
+//        api 'com.google.android.material:material:1.0.0-alpha3'
 
-dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    // android support 被Material Components取代
-//    api 'com.android.support:appcompat-v7:27.1.1'
-//    api 'com.android.support:design:27.1.1'
-//    api 'com.android.support:recyclerview-v7:27.1.1'
-//    api 'com.android.support.constraint:constraint-layout:1.1.0'
-//    api 'com.android.support:cardview-v7:27.1.1'
-    // Material Components for Android
-    api 'androidx.constraintlayout:constraintlayout:1.1.1'
-    api 'com.google.android.material:material:1.0.0-alpha3'
-    // Kotlin库
-    api 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
-    // Kotlin工具类库Anko
-    api 'org.jetbrains.anko:anko:0.10.5'
-    // gson
-    api 'com.google.code.gson:gson:2.8.4'
-    // 网络请求库retrofit Type-safe HTTP client for Android by Square
-    api 'com.squareup.retrofit2:retrofit:2.4.0'
-    // 异步库rx系列
-    api 'io.reactivex.rxjava2:rxjava:2.1.14'
-    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
-    // 下载库core
-    api 'com.liulishuo.okdownload:okdownload:1.0.3'
-    api 'com.liulishuo.okdownload:sqlite:1.0.3'
-    api 'com.liulishuo.okdownload:okhttp:1.0.3'
-    api 'com.squareup.okhttp3:okhttp:3.10.0'
-    //for okdownload
-    // 网络图片加载库
-    api('com.github.bumptech.glide:glide:4.6.1') {
-        exclude group: "com.android.support"
+        // Kotlin库
+        api 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
+        // Kotlin工具类库Anko
+        api 'org.jetbrains.anko:anko:0.10.5'
+
+        // gson
+        api 'com.google.code.gson:gson:2.8.4'
+
+        // 网络请求库retrofit Type-safe HTTP client for Android by Square
+        api 'com.squareup.retrofit2:retrofit:2.4.0'
+
+        // 异步库rx系列
+        api 'io.reactivex.rxjava2:rxjava:2.1.14'
+        api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+        api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+
+        // 下载库core
+        api 'com.liulishuo.okdownload:okdownload:1.0.3'
+        api 'com.liulishuo.okdownload:sqlite:1.0.3'
+        api 'com.liulishuo.okdownload:okhttp:1.0.3'
+        //for okdownload
+        api 'com.squareup.okhttp3:okhttp:3.10.0'
+
+        // 网络图片加载库
+        api('com.github.bumptech.glide:glide:4.6.1') {
+            exclude group: "com.android.support"
+        }
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+        implementation 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
+        //使glide使用okhttp网络库
     }
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
-    implementation 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
-    //使glide使用okhttp网络库
 }
-
 // upload to JCenter
 group = "com.summer.caidao"
 version = "1.0.1"
 def siteUrl = 'https://github.com/Summer-yang/KotlinCaidao.git'
 def gitUrl = 'https://github.com/Summer-yang/KotlinCaidao.git'
-
 install {
     repositories.mavenInstaller {
         pom {
@@ -109,7 +110,6 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = "sources"
 }
-
 //task javadoc(type: Javadoc) {
 //    options {
 //        encoding "UTF-8"
@@ -126,7 +126,6 @@ task sourcesJar(type: Jar) {
 //    classifier = "javadoc"
 //    from javadoc.destinationDir
 //}
-
 artifacts {
 //    archives javadocJar
     archives sourcesJar
@@ -146,5 +145,7 @@ bintray {
         publish = true
     }
 }
-
 // upload to JCenter
+
+dependencies {
+}

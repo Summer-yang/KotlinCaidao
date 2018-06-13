@@ -13,5 +13,13 @@
     <string name="fb_login_protocol_scheme">fb206391860152378</string>
     <!--Facebook-->
 
+    <!-- hint -->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+
+    <!-- Button -->
+    <string name="btn_sign_in">登录</string>
+    <string name="btn_sign_up">注册</string>
+    <string name="btn_find_pwd">忘记密码</string>
 
 </resources>

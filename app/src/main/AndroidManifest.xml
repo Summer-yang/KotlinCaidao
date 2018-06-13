@@ -26,6 +26,7 @@
         <meta-data
             android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
             android:value="false" />
+
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -44,9 +45,10 @@
         </activity>
         <!-- Facebook login -->
         <!-- Facebook Share -->
-        <provider android:authorities="com.facebook.app.FacebookContentProvider206391860152378"
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider206391860152378"
+            android:exported="true" />
         <!-- Facebook Share -->
 
         <activity android:name=".ActivityLauncher">
@@ -56,11 +58,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActivityMain"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ActivityMain" />
         <activity
             android:name=".demo.caidao.dismiss.keyboard.ActivityDismissKeyboard"
             android:windowSoftInputMode="stateHidden" />
@@ -71,6 +69,9 @@
         <activity android:name=".demo.caidao.share.sina.ActivityShareSina" />
         <activity android:name=".demo.caidao.share.google.ActivityShareGoogle" />
         <activity android:name=".demo.caidao.share.facebook.ActivityShareFacebook" />
+        <activity
+            android:name=".demo.caidao.login.ActivityLogin"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

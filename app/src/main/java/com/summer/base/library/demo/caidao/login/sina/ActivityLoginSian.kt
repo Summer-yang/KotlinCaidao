@@ -5,9 +5,9 @@ import android.os.Bundle
 import com.sina.weibo.sdk.WbSdk
 import com.sina.weibo.sdk.auth.*
 import com.sina.weibo.sdk.auth.sso.SsoHandler
+import com.summer.base.library.R
 import com.summer.base.library.base.BaseActivity
 import com.summer.base.library.base.Constants
-import com.summer.base.library.R
 import com.summer.caidao.toast.CaidaoToast
 import kotlinx.android.synthetic.main.activity_login_sian.*
 
@@ -41,10 +41,15 @@ class ActivityLoginSian : BaseActivity(), WbAuthListener {
     private var mAccessToken: Oauth2AccessToken? = null
     private var mSsoHandler: SsoHandler? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_sian)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_login_sian
+    }
+
+    override fun initView() {
         // 判定是否登陆过
         mAccessToken = AccessTokenKeeper.readAccessToken(this)
         mIsSessionValid = if (null != mAccessToken) {

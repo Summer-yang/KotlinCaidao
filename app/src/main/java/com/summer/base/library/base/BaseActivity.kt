@@ -1,6 +1,7 @@
 package com.summer.base.library.base
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
 /**
@@ -12,7 +13,19 @@ import androidx.appcompat.app.AppCompatActivity
  *
  */
 @SuppressLint("Registered")
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        getDataFromLastView(intent.extras)
+        setContentView(getLayout())
+        initView()
+
+    }
+
+    abstract fun getDataFromLastView(bundle: Bundle?)
+    abstract fun getLayout(): Int
+    abstract fun initView()
 
 }

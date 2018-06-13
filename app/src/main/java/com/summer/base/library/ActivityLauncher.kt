@@ -5,13 +5,16 @@ import android.os.Bundle
 import com.summer.base.library.base.BaseActivity
 
 class ActivityLauncher : BaseActivity() {
+    override fun getDataFromLastView(bundle: Bundle?) {
+        
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launcher)
+    override fun getLayout(): Int {
+        return R.layout.activity_launcher
+    }
 
+    override fun initView() {
         startActivity(Intent(this, ActivityMain::class.java))
-
         finish()
     }
 }

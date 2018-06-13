@@ -5,16 +5,13 @@ import android.Manifest
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.summer.base.library.R
 import com.summer.base.library.demo.caidao.dismiss.keyboard.ActivityDismissKeyboard
-import com.summer.base.library.demo.caidao.login.facebook.ActivityLoginFacebook
-import com.summer.base.library.demo.caidao.login.google.ActivityLoginGoogle
-import com.summer.base.library.demo.caidao.login.sina.ActivityLoginSian
-import com.summer.base.library.demo.caidao.login.wechat.ActivityLoginWeChat
+import com.summer.base.library.demo.caidao.login.ActivityLogin
 import com.summer.base.library.demo.caidao.share.facebook.ActivityShareFacebook
 import com.summer.base.library.demo.caidao.share.google.ActivityShareGoogle
 import com.summer.base.library.demo.caidao.share.sina.ActivityShareSina
@@ -27,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_fragment_demo_cai_dao.*
  * A simple [Fragment] subclass.
  *
  */
-class FragmentDemoCaiDao : androidx.fragment.app.Fragment(), AdapterMenuList.OnItemClickListener {
+class FragmentDemoCaiDao : Fragment(), AdapterMenuList.OnItemClickListener {
 
     // 疯狂点击
     private val caiDaoDoubleClick = CaiDaoDoubleClick()
@@ -37,10 +34,7 @@ class FragmentDemoCaiDao : androidx.fragment.app.Fragment(), AdapterMenuList.OnI
             "疯狂连击检测",
             "运行时权限请求",
             "Toast工具类",
-            "Google+登录",
-            "新浪微博登录",
-            "微信登录",
-            "Facebook登录",
+            "登录",
             "Google+分享",
             "新浪微博分享",
             "微信分享",
@@ -102,27 +96,18 @@ class FragmentDemoCaiDao : androidx.fragment.app.Fragment(), AdapterMenuList.OnI
                         .build().showShortSafe("CaidaoToast展示")
             }
             4 -> {
-                startActivity(Intent(context, ActivityLoginGoogle::class.java))
+                startActivity(Intent(context, ActivityLogin::class.java))
             }
             5 -> {
-                startActivity(Intent(context, ActivityLoginSian::class.java))
-            }
-            6 -> {
-                startActivity(Intent(context, ActivityLoginWeChat::class.java))
-            }
-            7 -> {
-                startActivity(Intent(context, ActivityLoginFacebook::class.java))
-            }
-            8 -> {
                 startActivity(Intent(context, ActivityShareGoogle::class.java))
             }
-            9 -> {
+            6 -> {
                 startActivity(Intent(context, ActivityShareSina::class.java))
             }
-            10 -> {
+            7 -> {
 
             }
-            11 -> {
+            8 -> {
                 startActivity(Intent(context, ActivityShareFacebook::class.java))
             }
         }

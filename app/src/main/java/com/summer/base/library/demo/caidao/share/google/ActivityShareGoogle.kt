@@ -1,15 +1,15 @@
 package com.summer.base.library.demo.caidao.share.google
 
 import android.app.Activity
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.summer.base.library.R
-import kotlinx.android.synthetic.main.activity_share_google.*
-import com.google.android.gms.plus.PlusShare
-import android.net.Uri
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Bundle
 import android.provider.MediaStore
+import com.google.android.gms.plus.PlusShare
+import com.summer.base.library.R
+import com.summer.base.library.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_share_google.*
 
 
 /**
@@ -19,17 +19,20 @@ import android.provider.MediaStore
  *
  *
  */
-class ActivityShareGoogle : AppCompatActivity() {
+class ActivityShareGoogle : BaseActivity() {
 
     private val REQ_SELECT_PHOTO = 1
     private val REQ_START_SHARE = 2
 
+    override fun getDataFromLastView(bundle: Bundle?) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_share_google)
+    }
 
+    override fun getLayout(): Int {
+        return R.layout.activity_share_google
+    }
 
+    override fun initView() {
         val imagePath = MediaStore.Images.Media.insertImage(contentResolver,
                 BitmapFactory.decodeStream(assets.open("icon_512.png")),
                 "icon_512",

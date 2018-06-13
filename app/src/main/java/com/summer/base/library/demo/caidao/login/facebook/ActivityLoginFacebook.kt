@@ -8,8 +8,8 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.summer.base.library.base.BaseActivity
 import com.summer.base.library.R
+import com.summer.base.library.base.BaseActivity
 import com.summer.caidao.toast.CaidaoToast
 import kotlinx.android.synthetic.main.activity_login_facebook.*
 
@@ -38,10 +38,15 @@ class ActivityLoginFacebook : BaseActivity() {
     private var isLoggedIn = false
     private lateinit var callbackManager: CallbackManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_facebook)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_login_facebook
+    }
+
+    override fun initView() {
         // 检查是否登陆过
         val accessToken = AccessToken.getCurrentAccessToken()
         isLoggedIn = null != accessToken && !accessToken.isExpired

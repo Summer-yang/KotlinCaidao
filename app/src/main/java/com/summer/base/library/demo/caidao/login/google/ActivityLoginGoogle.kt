@@ -6,9 +6,9 @@ import android.os.Bundle
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.summer.base.library.R
 import com.summer.base.library.base.BaseActivity
 import com.summer.base.library.base.Constants
-import com.summer.base.library.R
 import com.summer.caidao.toast.CaidaoToast
 import kotlinx.android.synthetic.main.activity_login_google.*
 
@@ -41,10 +41,15 @@ class ActivityLoginGoogle : BaseActivity() {
     private val requestCodeGoogleSignIn = 999
     private var isLoggedIn = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_google)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_login_google
+    }
+
+    override fun initView() {
         // 判定是不是登陆过
         val account = GoogleSignIn.getLastSignedInAccount(this)
         if (null != account && !account.isExpired) {

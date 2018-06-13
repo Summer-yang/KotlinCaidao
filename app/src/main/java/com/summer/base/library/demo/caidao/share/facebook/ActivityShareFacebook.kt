@@ -36,10 +36,15 @@ class ActivityShareFacebook : BaseActivity(), FacebookCallback<Sharer.Result> {
     private lateinit var callbackManager: CallbackManager
     private lateinit var shareDialog: ShareDialog
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_share_facebook)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_share_facebook
+    }
+
+    override fun initView() {
         callbackManager = CallbackManager.Factory.create()
         shareDialog = ShareDialog(this)
 

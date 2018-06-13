@@ -1,11 +1,11 @@
 package com.summer.base.library
 
 import android.os.Bundle
-import com.google.android.material.navigation.NavigationView
-import androidx.core.view.GravityCompat
-import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import com.summer.base.library.base.BaseActivity
 import com.summer.base.library.demo.caidao.FragmentDemoCaiDao
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,10 +16,15 @@ class ActivityMain : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private val fragmentNameDemoCaiDao = "FragmentDemoCaiDao"
     private var lastShowFragmentName: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun getDataFromLastView(bundle: Bundle?) {
 
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun initView() {
         setSupportActionBar(mToolbar)
 
         val toggle = ActionBarDrawerToggle(
