@@ -8,9 +8,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.summer.base.library.R
 import com.summer.base.library.base.BaseActivity
-import com.summer.base.library.base.Constants
-import com.summer.caidao.toast.CaidaoToast
-import kotlinx.android.synthetic.main.activity_login_google.*
+import com.summer.caidao.extend.RESULT_ERROR
 
 /**
  * Google+登录
@@ -36,10 +34,9 @@ import kotlinx.android.synthetic.main.activity_login_google.*
  *
  * 7.使用以下代码登录
  */
-class ActivityLoginGoogle : BaseActivity() {
+const val REQUEST_CODE_GOOGLE_SIGN_IN = 900
 
-    private val requestCodeGoogleSignIn = 999
-    private var isLoggedIn = false
+class ActivityLoginGoogle : BaseActivity() {
 
     override fun getDataFromLastView(bundle: Bundle?) {
 
@@ -52,77 +49,48 @@ class ActivityLoginGoogle : BaseActivity() {
     override fun initView() {
         // 判定是不是登陆过
         val account = GoogleSignIn.getLastSignedInAccount(this)
+
         if (null != account && !account.isExpired) {
-            updateUI(account.idToken)
-        }
-
-        btnGoogleLogin.setOnClickListener {
-            if (isLoggedIn) {
-                CaidaoToast.Builder(this).build().showShortSafe("已经登陆过了")
-            } else {
-                googleLogin()
-            }
-        }
-
-        btnGoogleLogout.setOnClickListener {
-            if (isLoggedIn) {
-                googleLogout()
-            } else {
-                CaidaoToast.Builder(this).build().showShortSafe("请先登录")
-            }
+            val bundle = Bundle()
+            bundle.putString("token", account.idToken)
+            setResult(Activity.RESULT_OK, Intent().putExtras(bundle))
+            finish()
+        } else {
+            googleLogin()
         }
     }
 
-    fun googleLogin() {
+    private fun googleLogin() {
         // Configure sign-in to request the user's ID, email address, and basic profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(Constants.GOOGLE_KEY)
+                .requestIdToken("277496732900-5e8ontlq8or9s7rksbakrq00afagopsk.apps.googleusercontent.com")
                 .requestEmail()
                 .build()
 
         val googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        startActivityForResult(googleSignInClient.signInIntent, requestCodeGoogleSignIn)
+        startActivityForResult(googleSignInClient.signInIntent, REQUEST_CODE_GOOGLE_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCodeGoogleSignIn == requestCode) {
+        if (REQUEST_CODE_GOOGLE_SIGN_IN == requestCode) {
             if (Activity.RESULT_OK == resultCode) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                 try {
                     val account = task.getResult(ApiException::class.java)
-                    updateUI(account.idToken)
+                    val bundle = Bundle()
+                    bundle.putString("token", account.idToken)
+                    setResult(Activity.RESULT_OK, Intent().putExtras(bundle))
                 } catch (e: ApiException) {
-                    token.text = String.format("%s:%s", "登录失败task.getResult异常", e.message)
+                    setResult(RESULT_ERROR)
                 }
             } else {
-                token.text = "登录失败 resultCode != Activity.RESULT_OK"
+                setResult(RESULT_ERROR)
             }
-        }
-    }
-
-
-    private fun updateUI(idToken: String?) {
-        if (idToken.isNullOrBlank()) {
-            isLoggedIn = false
-            token.text = "token null"
         } else {
-            isLoggedIn = true
-            token.text = idToken
+            setResult(RESULT_ERROR)
         }
-    }
-
-    private fun googleLogout() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(Constants.GOOGLE_KEY)
-                .requestEmail()
-                .build()
-
-        val googleSignInClient = GoogleSignIn.getClient(this, gso)
-        googleSignInClient.signOut()
-
-        isLoggedIn = false
-        token.text = "这里显示Google登录返回的token"
+        finish()
     }
 }

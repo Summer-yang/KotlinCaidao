@@ -62,10 +62,18 @@
         <activity
             android:name=".demo.caidao.dismiss.keyboard.ActivityDismissKeyboard"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".demo.caidao.login.google.ActivityLoginGoogle" />
-        <activity android:name=".demo.caidao.login.sina.ActivityLoginSian" />
-        <activity android:name=".demo.caidao.login.wechat.ActivityLoginWeChat" />
-        <activity android:name=".demo.caidao.login.facebook.ActivityLoginFacebook" />
+        <activity
+            android:name=".demo.caidao.login.google.ActivityLoginGoogle"
+            android:theme="@style/AppTheme.Translucent" />
+        <activity
+            android:name=".demo.caidao.login.sina.ActivityLoginSian"
+            android:theme="@style/AppTheme.Translucent" />
+        <activity
+            android:name=".demo.caidao.login.wechat.ActivityLoginWeChat"
+            android:theme="@style/AppTheme.Translucent" />
+        <activity
+            android:name=".demo.caidao.login.facebook.ActivityLoginFacebook"
+            android:theme="@style/AppTheme.Translucent" />
         <activity android:name=".demo.caidao.share.sina.ActivityShareSina" />
         <activity android:name=".demo.caidao.share.google.ActivityShareGoogle" />
         <activity android:name=".demo.caidao.share.facebook.ActivityShareFacebook" />

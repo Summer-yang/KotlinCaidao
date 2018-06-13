@@ -1,5 +1,6 @@
 package com.summer.base.library.demo.caidao.login.facebook
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import com.facebook.AccessToken
@@ -10,8 +11,7 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.summer.base.library.R
 import com.summer.base.library.base.BaseActivity
-import com.summer.caidao.toast.CaidaoToast
-import kotlinx.android.synthetic.main.activity_login_facebook.*
+import com.summer.caidao.extend.RESULT_ERROR
 
 /**
  * Facebook登录
@@ -35,7 +35,6 @@ import kotlinx.android.synthetic.main.activity_login_facebook.*
  */
 class ActivityLoginFacebook : BaseActivity() {
 
-    private var isLoggedIn = false
     private lateinit var callbackManager: CallbackManager
 
     override fun getDataFromLastView(bundle: Bundle?) {
@@ -49,26 +48,12 @@ class ActivityLoginFacebook : BaseActivity() {
     override fun initView() {
         // 检查是否登陆过
         val accessToken = AccessToken.getCurrentAccessToken()
-        isLoggedIn = null != accessToken && !accessToken.isExpired
-        if (isLoggedIn) {
-            token.text = accessToken.token
+        if (null != accessToken && !accessToken.isExpired) {
+            loginSuccess(accessToken.token)
+        } else {
+            login()
         }
 
-        btnFacebookLogin.setOnClickListener {
-            if (isLoggedIn) {
-                CaidaoToast.Builder(this).build().showShortSafe("已经登陆过了")
-            } else {
-                login()
-            }
-        }
-
-        btnFacebookLogout.setOnClickListener {
-            if (isLoggedIn) {
-                logout()
-            } else {
-                CaidaoToast.Builder(this).build().showShortSafe("请先登录")
-            }
-        }
     }
 
     private fun login() {
@@ -77,36 +62,36 @@ class ActivityLoginFacebook : BaseActivity() {
         loginManager.logInWithReadPermissions(this, listOf("public_profile"))
         loginManager.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
-                if (null != result) {
-                    loginSuccess(result)
+                if (null == result) {
+                    setResult(RESULT_ERROR)
+                    finish()
+                } else {
+                    loginSuccess(result.accessToken.token)
                 }
             }
 
             override fun onCancel() {
-                CaidaoToast.Builder(this@ActivityLoginFacebook).build().showShortSafe("取消登录")
+                setResult(Activity.RESULT_CANCELED)
+                finish()
             }
 
             override fun onError(error: FacebookException?) {
-                CaidaoToast.Builder(this@ActivityLoginFacebook).build().showShortSafe(String.format("%s:%s", "登录失败", error.toString()))
+                setResult(RESULT_ERROR)
+                finish()
             }
         })
-    }
-
-    private fun logout() {
-        val loginManager = LoginManager.getInstance()
-        loginManager.logOut()
-        isLoggedIn = false
-        token.text = "这里显示Facebook登录返回的token"
-    }
-
-    private fun loginSuccess(result: LoginResult) {
-        CaidaoToast.Builder(this).build().showShortSafe("登录成功")
-        isLoggedIn = true
-        token.text = result.accessToken.token
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+    private fun loginSuccess(token: String) {
+        val bundle = Bundle()
+        bundle.putString("token", token)
+        setResult(Activity.RESULT_OK, Intent().putExtras(bundle))
+        finish()
     }
 }
