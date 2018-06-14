@@ -19,6 +19,8 @@ object Constants {
     const val SINA_WEIBO_SCOPE = ("email,direct_messages_read,direct_messages_write,"
             + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
             + "follow_app_official_microblog," + "invitation_write")
-    // 微信登录
 
+    // 微信登录
+    const val WE_CHAT_APP_ID = "wx9d82e50aded8560a"
+    const val WE_CHAT_APP_SECRET = "35f8e012370daa848412f17fb45002a7"
 }

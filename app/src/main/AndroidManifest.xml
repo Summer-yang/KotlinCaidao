@@ -51,6 +51,15 @@
             android:exported="true" />
         <!-- Facebook Share -->
 
+        <!-- 微信登录回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Translucent" />
+        <!-- 微信登录回调 -->
+
         <activity android:name=".ActivityLauncher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,6 +79,9 @@
             android:theme="@style/AppTheme.Translucent" />
         <activity
             android:name=".demo.caidao.login.wechat.ActivityLoginWeChat"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.Translucent" />
         <activity
             android:name=".demo.caidao.login.facebook.ActivityLoginFacebook"

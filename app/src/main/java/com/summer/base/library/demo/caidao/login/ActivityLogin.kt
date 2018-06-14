@@ -9,6 +9,7 @@ import com.summer.base.library.base.BaseActivity
 import com.summer.base.library.demo.caidao.login.facebook.ActivityLoginFacebook
 import com.summer.base.library.demo.caidao.login.google.ActivityLoginGoogle
 import com.summer.base.library.demo.caidao.login.sina.ActivityLoginSian
+import com.summer.base.library.demo.caidao.login.wechat.ActivityLoginWeChat
 import com.summer.caidao.extend.setClicker
 import com.summer.caidao.keyboard.dismiss.CaiDaoKeyboardDismiss
 import com.summer.caidao.toast.CaidaoToast
@@ -48,7 +49,7 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
 
             }
             R.id.ivWeChat -> {
-
+                startActivityForResult(Intent(this, ActivityLoginWeChat::class.java), REQUEST_CODE_WE_CHAT)
             }
             R.id.ivSina -> {
                 startActivityForResult(Intent(this, ActivityLoginSian::class.java), REQUEST_CODE_SINA)

@@ -1,6 +1,7 @@
 package com.summer.base.library.base
 
 import androidx.multidex.MultiDexApplication
+import com.summer.base.library.http.ApiClient
 
 /**
  * Created by
@@ -11,4 +12,12 @@ import androidx.multidex.MultiDexApplication
  *
  */
 class BaseApplication : MultiDexApplication() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        // 初始化网络请求类
+        ApiClient.instance.init()
+    }
+
 }

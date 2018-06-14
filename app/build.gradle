@@ -40,6 +40,10 @@ android {
     // 新浪微博
 }
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':caidao')
