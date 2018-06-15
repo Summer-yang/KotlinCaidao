@@ -9,20 +9,37 @@ import com.summer.caidao.CAIDAO_NAME_SHARED_PREFERENCES
  * User -> Summer
  * Date -> 2018/5/16
  *
- * Description: SharedPreferences工具类
+ * Description:
+ * 单例模式
+ * SharedPreferences工具类
+ *
+ * 也可以使用
+ * api 'androidx.core:core-ktx:1.0.0-alpha3'
+ * 扩展库进行修改
  *
  */
-class CaiDaoSharedPreferences() {
+class CaiDaoSharedPreferences private constructor() {
 
     private lateinit var mSharedPreferences: SharedPreferences
 
-    constructor(context: Context) : this(context, CAIDAO_NAME_SHARED_PREFERENCES)
+    private object Inner {
+        val caiDaoSharedPreferences = CaiDaoSharedPreferences()
+    }
 
-    constructor(context: Context, sharedPreferencesName: String) : this() {
-        if (sharedPreferencesName.isEmpty()) {
-            throw Exception("SharedPreferences名为空")
+    companion object {
+        fun get(context: Context): CaiDaoSharedPreferences {
+            val caiDaoSharedPreferences = Inner.caiDaoSharedPreferences
+            caiDaoSharedPreferences.mSharedPreferences = context.getSharedPreferences(CAIDAO_NAME_SHARED_PREFERENCES, Context.MODE_PRIVATE)
+            return caiDaoSharedPreferences
         }
-        mSharedPreferences = context.getSharedPreferences(sharedPreferencesName, Context.MODE_PRIVATE)
+
+        fun get(context: Context, name: String): CaiDaoSharedPreferences {
+            if (name.isBlank()) throw Exception()
+
+            val caiDaoSharedPreferences = Inner.caiDaoSharedPreferences
+            caiDaoSharedPreferences.mSharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE)
+            return caiDaoSharedPreferences
+        }
     }
 
     /**
