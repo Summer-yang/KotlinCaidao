@@ -12,6 +12,7 @@ import com.sina.weibo.sdk.share.WbShareHandler
 import com.summer.base.library.R
 import com.summer.base.library.base.BaseActivity
 import com.summer.base.library.base.Constants
+import com.summer.base.library.demo.caidao.share.EntityShare
 import com.summer.caidao.toast.CaidaoToast
 import kotlinx.android.synthetic.main.activity_share_sina.*
 import java.io.File
@@ -33,7 +34,7 @@ class ActivityShareSina : BaseActivity(), WbShareCallback, WbAuthListener {
     private lateinit var shareHandler: WbShareHandler
 
     // 要分享的内容
-    private lateinit var entityShareWeibo: EntityShareWeibo
+    private lateinit var entityShareWeibo: EntityShare
 
     // 普通分享 or 分享到story
     private var isNormalShare = true
@@ -97,8 +98,8 @@ class ActivityShareSina : BaseActivity(), WbShareCallback, WbAuthListener {
     /**
      * 获取数据
      */
-    private fun getShareData(): EntityShareWeibo {
-        val entityShareWeibo = EntityShareWeibo()
+    private fun getShareData(): EntityShare {
+        val entityShareWeibo = EntityShare()
         entityShareWeibo.shareMessage = "分享到微博的信息"
         return entityShareWeibo
     }

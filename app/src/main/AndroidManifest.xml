@@ -51,6 +51,7 @@
             android:exported="true" />
         <!-- Facebook Share -->
 
+
         <!-- 微信登录回调 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -92,6 +93,9 @@
         <activity
             android:name=".demo.caidao.login.ActivityLogin"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".demo.caidao.share.ActivityShare"
+            android:theme="@style/AppTheme.Translucent.No.Anim" />
     </application>
 
 </manifest>

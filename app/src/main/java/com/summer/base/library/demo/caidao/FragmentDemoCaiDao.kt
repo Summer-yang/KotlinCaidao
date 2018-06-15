@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment
 import com.summer.base.library.R
 import com.summer.base.library.demo.caidao.dismiss.keyboard.ActivityDismissKeyboard
 import com.summer.base.library.demo.caidao.login.ActivityLogin
-import com.summer.base.library.demo.caidao.share.facebook.ActivityShareFacebook
-import com.summer.base.library.demo.caidao.share.google.ActivityShareGoogle
-import com.summer.base.library.demo.caidao.share.sina.ActivityShareSina
+import com.summer.base.library.demo.caidao.share.ActivityShare
 import com.summer.caidao.check.click.CaiDaoDoubleClick
 import com.summer.caidao.permission.CaiDaoPermission
 import com.summer.caidao.toast.CaidaoToast
@@ -35,10 +33,7 @@ class FragmentDemoCaiDao : Fragment(), AdapterMenuList.OnItemClickListener {
             "运行时权限请求",
             "Toast工具类",
             "登录",
-            "Google+分享",
-            "新浪微博分享",
-            "微信分享",
-            "Facebook分享")
+            "分享")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -99,16 +94,7 @@ class FragmentDemoCaiDao : Fragment(), AdapterMenuList.OnItemClickListener {
                 startActivity(Intent(context, ActivityLogin::class.java))
             }
             5 -> {
-                startActivity(Intent(context, ActivityShareGoogle::class.java))
-            }
-            6 -> {
-                startActivity(Intent(context, ActivityShareSina::class.java))
-            }
-            7 -> {
-
-            }
-            8 -> {
-                startActivity(Intent(context, ActivityShareFacebook::class.java))
+                startActivity(Intent(context, ActivityShare::class.java))
             }
         }
     }

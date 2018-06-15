@@ -28,4 +28,6 @@
     <color name="colorListItemNormal">#ffffff</color>
     <color name="colorListItemHighlight">#64ffffff</color>
 
+    <color name="colorTrans">#3c999999</color>
+
 </resources>

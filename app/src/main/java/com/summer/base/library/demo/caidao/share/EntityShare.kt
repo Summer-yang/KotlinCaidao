@@ -1,4 +1,4 @@
-package com.summer.base.library.demo.caidao.share.sina
+package com.summer.base.library.demo.caidao.share
 
 /**
  * Created by
@@ -8,7 +8,7 @@ package com.summer.base.library.demo.caidao.share.sina
  * Description:
  *
  */
-data class EntityShareWeibo(
+data class EntityShare(
         var shareMessage: String? = null,
         var shareImagePath: String? = null,
         var shareMultiImagePaths: ArrayList<String>? = null,
