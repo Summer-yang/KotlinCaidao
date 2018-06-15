@@ -33,6 +33,7 @@ class ApiClient private constructor() {
                         if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
                         else HttpLoggingInterceptor.Level.NONE
                 ))
+                .addInterceptor(HttpHeaderInterceptor().getHeaderInterceptor())
                 .build()
 
         val retrofit = Retrofit.Builder()

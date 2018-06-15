@@ -39,22 +39,11 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
 
     private lateinit var api: IWXAPI
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-
-        setIntent(intent)
-        api.handleIntent(intent, this)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         api = WXAPIFactory.createWXAPI(this, Constants.WE_CHAT_APP_ID, true)
-        try {
-            api.handleIntent(intent, this)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        api.handleIntent(intent, this)
     }
 
     override fun onResp(p0: BaseResp?) {
@@ -93,6 +82,7 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
         bundle.putString("result", result)
         intent.putExtras(bundle)
         startActivity(intent)
+        finish()
     }
 
 }
