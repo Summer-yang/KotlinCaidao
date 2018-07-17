@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- 应用内购买权限 -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
@@ -18,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- Facebook login -->
+        <!-- Facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -43,13 +46,12 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <!-- Facebook login -->
-        <!-- Facebook Share -->
+
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider206391860152378"
             android:exported="true" />
-        <!-- Facebook Share -->
+        <!-- Facebook -->
 
 
         <!-- 微信登录回调 -->

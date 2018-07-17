@@ -22,27 +22,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '28.0.0'
+    buildToolsVersion '28.0.1'
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     dependencies {
         implementation fileTree(include: ['*.jar'], dir: 'libs')
-        // android support 被Material Components取代
-        api(['com.android.support:appcompat-v7:28.0.0-alpha3',
-             'com.android.support:design:28.0.0-alpha3',
-             'com.android.support:recyclerview-v7:28.0.0-alpha3',
-             'com.android.support.constraint:constraint-layout:1.1.2',
-             'com.android.support:cardview-v7:28.0.0-alpha3'])
         // Material Components for Android
-//        api 'androidx.constraintlayout:constraintlayout:1.1.2'
-//        api 'com.google.android.material:material:1.0.0-alpha3'
+        api 'androidx.constraintlayout:constraintlayout:1.1.2'
+        api 'com.google.android.material:material:1.0.0-beta01'
 
         // Kotlin库
-        api 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41'
+        api 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.51'
         // Kotlin扩展库
-        api 'androidx.core:core-ktx:1.0.0-alpha3'
+        api 'androidx.core:core-ktx:1.0.0-beta01'
         // Kotlin工具类库Anko
         api 'org.jetbrains.anko:anko:0.10.5'
 
@@ -78,6 +72,9 @@ android {
         annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
         implementation 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
         //使glide使用okhttp网络库
+
+        // Jetpack
+        // Jetpack
     }
 }
 // upload to JCenter

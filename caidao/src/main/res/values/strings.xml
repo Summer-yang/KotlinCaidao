@@ -1,2 +1,7 @@
 <resources>
+
+    <!-- Behavior -->
+    <string name="behavior_hide_fab_on_scroll">com.summer.caidao.behavior.CaiDaoBehaviorFAB</string>
+    <!-- Behavior -->
+
 </resources>

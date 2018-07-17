@@ -22,6 +22,46 @@ import kotlinx.android.synthetic.main.activity_share_facebook.*
  * 文档地址
  * https://developers.facebook.com/docs/sharing/android?sdk=maven
  *
+ * 步骤:
+ * 1.添加依赖
+ *  implementation('com.facebook.android:facebook-android-sdk:4.31.0') {
+ *       exclude group: "com.android.support"
+ *  }
+ * 2.在开发者网站注册App
+ * 3.在strings文件中添加facebook_app_id
+ * 4.在AndroidManifest文件中添加
+ *  <meta-data
+ *      android:name="com.facebook.sdk.ApplicationId"
+ *      android:value="@string/facebook_app_id" />
+ *  <provider
+ *      android:name="com.facebook.FacebookContentProvider"
+ *      android:authorities="com.facebook.app.FacebookContentProvider接app id"
+ *      android:exported="true" />
+ *
+ *  <!-- 禁用自动事件记录 -->
+ *  <meta-data
+ *      android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
+ *      android:value="false" />
+ *
+ *  <!-- Facebook登录 -->
+ *
+ *  <activity
+ *      android:name="com.facebook.FacebookActivity"
+ *      android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+ *      android:label="@string/app_name" />
+ *  <activity
+ *      android:name="com.facebook.CustomTabActivity"
+ *      android:exported="true">
+ *      <intent-filter>
+ *           <action android:name="android.intent.action.VIEW" />
+ *           <category android:name="android.intent.category.DEFAULT" />
+ *           <category android:name="android.intent.category.BROWSABLE" />
+ *           <data android:scheme="@string/fb_login_protocol_scheme" />
+ *      </intent-filter>
+ *  </activity>
+ *
+ *  <!-- Facebook登录 -->
+ *
  * 注意:
  * 1.实施分享时，应用不应预填写任何分享内容，否则将违反 Facebook 开放平台政策
  * 2.如果您的应用分享包含 Google Play 或 App Store 中任何应用的链接，则该分享中包含的描述和图片将被忽略。

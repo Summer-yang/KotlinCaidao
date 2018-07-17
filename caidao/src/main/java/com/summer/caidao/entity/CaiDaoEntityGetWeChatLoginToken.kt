@@ -6,7 +6,7 @@ package com.summer.caidao.entity
  * Date -> 2018/6/14
  *
  * Description:
- *
+ * 微信登录用,请求微信token的返回值
  */
 data class CaiDaoEntityGetWeChatLoginToken(
         var access_token: String? = null,

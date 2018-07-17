@@ -1,7 +1,6 @@
 package com.summer.base.library.http
 
 import android.content.Context
-import com.summer.caidao.dialog.CaiDaoDialog
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import java.net.ConnectException
@@ -26,7 +25,7 @@ abstract class ApiResponse<T>(private val context: Context) : Observer<ResponseW
     }
 
     override fun onSubscribe(d: Disposable) {
-        CaiDaoDialog.show(context)
+//        CaiDaoDialog.show(context)
     }
 
     override fun onNext(t: ResponseWrapper<T>) {
@@ -48,7 +47,7 @@ abstract class ApiResponse<T>(private val context: Context) : Observer<ResponseW
     }
 
     override fun onError(e: Throwable) {
-        CaiDaoDialog.cancel()
+//        CaiDaoDialog.cancel()
         val apiErrorType: ApiErrorType = when (e) {
             is UnknownHostException -> ApiErrorType.NETWORK_NOT_CONNECT
             is ConnectException -> ApiErrorType.NETWORK_NOT_CONNECT
@@ -59,6 +58,6 @@ abstract class ApiResponse<T>(private val context: Context) : Observer<ResponseW
     }
 
     override fun onComplete() {
-        CaiDaoDialog.cancel()
+//        CaiDaoDialog.cancel()
     }
 }
